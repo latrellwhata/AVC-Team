@@ -1,0 +1,22 @@
+#include  <stdio.h>
+#include <time.h>
+#include "E101.h"
+
+
+int turn_left();
+int  main (){
+init();
+turn_left();
+return 0;
+}
+int turn_left(){
+	set_motor(1,100);
+	sleep(1,0);
+	
+	set_motor(2,-55);
+	
+	sleep1(1,0);
+	stop(1);
+	stop(2);
+	return(0);
+}
