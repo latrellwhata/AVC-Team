@@ -12,3 +12,5 @@ int main(){
     set_motor(2, -150);
     sleep1(0,500000);
 return 0;}
+
+hi
