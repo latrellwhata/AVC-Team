@@ -36,22 +36,37 @@
  		sum = sum + (pix-160)*sig[pix];
 		P_signal = sum * k_P;
 		}
+			printf("White Pixles = %d\n" , num_white_pixels);
+			int v1 = 60+P_signal*multi;
+			int v2 = 60-P_signal*multi;
 		
-		int v1 = 70+P_signal*multi;
-		int v2 = 70-P_signal*multi;
+		if (v1>255){ //makes sure motor speed is between the accepted values
+			v1 = 200;
+		}
+		if (v1>-255){ //makes sure motor speed is between the accepted values
+			v1 = -200;
+		}
+		if (v2>255){ //makes sure motor speed is between the accepted values
+			v2 = 200;
+		}
+		if (v1>-255){ //makes sure motor speed is between the accepted values
+			v2 = 200;
+		}
+		
+			
   		
 		if (num_white_pixels!=0){ //if no white pixels, we lost the line
-		printf("Direction = Foward\n");
-		printf("Proportional Signal = %d\n" , P_signal);
-		printf("Motor 1 = %d \n Motor 2 =%d", v1, v2) ;
-		set_motor(1,v1);
-		set_motor(2,v2);
+			printf("Direction = Foward\n");
+			printf("Proportional Signal = %d\n" , P_signal);
+			printf("Motor 1 = %d \n Motor 2 =%d", v1, v2) ;
+			set_motor(1,v1);
+			set_motor(2,v2);
 		}
 		else {
-		printf("Direction = Reverse\n");
-		printf("Motor 1 = %d \n Motor 2 =%d", -v1, -v2) ;
-		set_motor(1, -v1);
-		set_motor(2, -v2);
+			printf("Direction = Reverse\n");
+			printf("Motor 1 = %d \n Motor 2 =%d", -v1, -v2) ;
+			set_motor(1, -v1);
+			set_motor(2, -v2);
 		}
 	}
 }
