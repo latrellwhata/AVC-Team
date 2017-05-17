@@ -95,7 +95,7 @@
 			//v2=90;
 			printf("Direction = Foward\n");
 			printf("Proportional Signal = %d\n" , P_signal);
-			printf("Motor 1 = %d \n Motor 2 =%d", v1, v2) ;
+			printf("Motor 1 = %d \n Motor 2 =%d \n", v1, v2) ;
 			set_motor(1,v1);
 			set_motor(2,v2);
 			sleep1(0,5000);
@@ -104,7 +104,7 @@
 			//v1=90;
 			//v2=90;
 			printf("Direction = Reverse\n");
-			printf("Motor 1 = %d \n Motor 2 =%d", -v1, -v2) ;
+			printf("Motor 1 = %d \n Motor 2 =%d \n", -v1, -v2) ;
 			set_motor(1, -v1*1.1);
 			set_motor(2, -v2*1.0);
 			sleep1(0,500);
