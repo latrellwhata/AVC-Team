@@ -1,5 +1,6 @@
 # include <stdio.h>
 # include <time.h>
+# include "E101.h"
 
 extern "C" int init_hardware();
 extern "C" int connect_to_server( char server_addr[15],int port);
