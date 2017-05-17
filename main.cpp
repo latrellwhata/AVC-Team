@@ -2,7 +2,7 @@
 #include <time.h>
 #include "E101.h"
 
- 
+ int second();
  
  int main(){
  	init();
@@ -90,7 +90,7 @@
 		
 		
   		
-		if (num_white_pixels>5){ //if this is not above 0 then we dont have a siginal
+		if (num_white_pixels>5 && <=250){ //if this is not above 0 then we dont have a siginal
 			//v1=90;
 			//v2=90;
 			printf("Direction = Foward\n");
@@ -100,6 +100,11 @@
 			set_motor(2,v2);
 			sleep1(0,50000);
 		}
+		if (num_white_pixels>250){ //if this is not above 0 then we dont have a siginal
+			second();
+		}
+		
+		
 		else { // no white pixels so we must go back to find the line
 			//v1=90;
 			//v2=90;
@@ -111,6 +116,10 @@
 		}
 		
 	}
+	 
+	
+}
+int second (){
 	
 }
 
