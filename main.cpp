@@ -49,20 +49,20 @@
 		if (v2>255){ //makes sure motor speed is between the accepted values
 			v2 = 200;
 		}
-		if (v1>-255){ //makes sure motor speed is between the accepted values
-			v2 = 200;
+		if (v2>-255){ //makes sure motor speed is between the accepted values
+			v2 = -200;
 		}
 		
 			
   		
-		if (num_white_pixels!=0){ //if no white pixels, we lost the line
+		if (num_white_pixels>0){ //if this is not above 0 then we dont have a siginal
 			printf("Direction = Foward\n");
 			printf("Proportional Signal = %d\n" , P_signal);
 			printf("Motor 1 = %d \n Motor 2 =%d", v1, v2) ;
 			set_motor(1,v1);
 			set_motor(2,v2);
 		}
-		else {
+		else { // no white pixels so we must go back to find the line
 			printf("Direction = Reverse\n");
 			printf("Motor 1 = %d \n Motor 2 =%d", -v1, -v2) ;
 			set_motor(1, -v1);
