@@ -90,7 +90,7 @@
 		
 		
   		
-		if (num_white_pixels>5 && <=250){ //if this is not above 0 then we dont have a siginal
+		if (num_white_pixels>5 ){ //if this is not above 0 then we dont have a siginal
 			//v1=90;
 			//v2=90;
 			printf("Direction = Foward\n");
@@ -100,8 +100,9 @@
 			set_motor(2,v2);
 			sleep1(0,50000);
 		}
-		if (num_white_pixels>250){ //if this is not above 0 then we dont have a siginal
-			second();
+		//if (num_white_pixels>250){ //if this is not above 0 then we dont have a siginal
+			
+		//}
 		}
 		
 		
@@ -110,7 +111,7 @@
 			//v2=90;
 			printf("Direction = Reverse\n");
 			printf("Motor 1 = %d \n Motor 2 =%d \n", -v1, -v2) ;
-			set_motor(1, -v1*1.1);
+			set_motor(1, -v1*1.2);
 			set_motor(2, -v2*1.0);
 			sleep1(0,5000);
 		}
