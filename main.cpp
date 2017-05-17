@@ -29,7 +29,7 @@
  		char white; // whiteness of that pixel
  		char sig[320]; // siginal of that pixel
 		int num_white_pixels = 0;
-		float k_P = 0.5;
+		float k_P = 0.0085;
 		int P_signal = 0.0;
 		//float multi = 0.2;
 		
@@ -98,7 +98,7 @@
 			printf("Motor 1 = %d \n Motor 2 =%d \n", v1, v2) ;
 			set_motor(1,v1);
 			set_motor(2,v2);
-			sleep1(0,5000);
+			sleep1(0,50000);
 		}
 		else { // no white pixels so we must go back to find the line
 			//v1=90;
@@ -107,7 +107,7 @@
 			printf("Motor 1 = %d \n Motor 2 =%d \n", -v1, -v2) ;
 			set_motor(1, -v1*1.1);
 			set_motor(2, -v2*1.0);
-			sleep1(0,500);
+			sleep1(0,5000);
 		}
 		
 	}
