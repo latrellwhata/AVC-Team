@@ -63,6 +63,7 @@ int main(){
 		int PID_signal = 0
 		int current_sig;
 		int previous_sig;
+		int sig_Diff;
 //P
 		float k_P = 0.0085;
 		int P_signal = 0.0;
@@ -71,6 +72,7 @@ int main(){
 //I		
 		int I_signal = 0;
 		float k_I = 0.5;
+		int total_sum =0;
 		
 //D		
 		int D_signal = 0;
@@ -90,13 +92,23 @@ int main(){
 			else{ // sets pixel to black
 			sig_H[pix_H]=0;
 			}
-// Error siginal Cacaulation
+// Error siginal Cacaulations
+			
+// P Signal
 			sum_H = sum_H + (pix_H-160)*sig_H[pix_H];
 			P_signal = sum_H * k_P;
-			}
-			sum_H_Difference = current_sum_H-previous_sum_H;
-			D_signal = (sum_H_Difference/error_period)*k_D;
-			previous_sum_H = current_sum_H;
+// I signal			
+			total_sum = total_sum +sum_H
+			I_signal = total_sum*k_I;
+
+// D Signal
+			sig_Diff = current_sig-previous_sig;
+			current_sig = P_signal;
+			D_signal = (sig_Diff/error_period)*k_D;
+			previous_sig = current_sig;
+// PID signal
+			PID_signal = P_signal*I_signal*D_signal;
+		}
 		
 // for Vertical Left Line 
 		for (pix_VL=0;pix_VL<240;pix_VL++){
