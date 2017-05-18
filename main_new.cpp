@@ -36,7 +36,6 @@ int main(){
 		
 // Vertial Left scan Varibles
 		int pix_VL;
- 		int pix_VR;
  		int sum_VL = 0;
  		int pix_VL; // pixel
  		char white_VL; // whiteness of that pixel on the vertical Line
@@ -44,7 +43,7 @@ int main(){
 		int num_white_pixels_VL = 0;
 		
 // Vertial Right scan Varibles
-		int pix_VR;
+		
  		int pix_VR;
  		int sum_VR = 0;
  		int pix_VR; // pixel
@@ -60,6 +59,7 @@ int main(){
 		int count1 =0;
 		int count2 =0;
 		int count3 =0;
+		int debug = 0; // Turns on all the print statements
 		
 		
  // for the Horizontal Line
@@ -108,9 +108,9 @@ int main(){
 
 		
 //Sets up Initial Motor speeds using PID stuff
-	 
-		printf("White Pixels = %d\n" , num_white_pixels_H);
-			
+	 	if (debug == 1){
+			printf("White Pixels HORIZONTAL = %d\n" , num_white_pixels_H);
+		}
 		int v1 = 60+P_signal;
 		int v2 = 60-P_signal;
 				
@@ -164,21 +164,19 @@ int main(){
 			sleep1(0,500000);
 			}		
 		}
-			printf("Direction = Foward\n");
-			printf("Proportional Signal = %d\n" , P_signal);
-			printf("Motor 1 = %d \n Motor 2 =%d \n", v1, v2) ;
-			set_motor(1,v1);
-			set_motor(2,v2);
-			sleep1(0,50000);
-		}
+		
+			
+		
 		
   		
 		if (num_white_pixels_H>3 && num_white_pixels_H<200 ){ //if this is not above 0 then we dont have a siginal
 			//v1=90;
 			//v2=90;
-			printf("Direction = Foward\n");
-			printf("Proportional Signal = %d\n" , P_signal);
-			printf("Motor 1 = %d \n Motor 2 =%d \n", v1, v2) ;
+			if (debug == 1){
+				printf("Direction = Foward\n");
+				printf("Proportional Signal = %d\n" , P_signal);
+				printf("Motor 1 = %d \n Motor 2 =%d \n", v1, v2) ;
+			}	
 			set_motor(1,v1);
 			set_motor(2,v2);
 			sleep1(0,50000);
@@ -189,8 +187,10 @@ int main(){
 		else { // no white pixels so we must go back to find the line
 			//v1=90;
 			//v2=90;
-			printf("Direction = Reverse\n");
-			printf("Motor 1 = %d \n Motor 2 =%d \n", -v1, -v2) ;
+			if (debug == 1){
+				printf("Direction = Reverse\n");
+				printf("Motor 1 = %d \n Motor 2 =%d \n", -v1, -v2) ;
+			}
 			set_motor(1, -v1*1.3);
 			set_motor(2, -v2*0.7);
 			sleep1(0,5000);
