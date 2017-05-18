@@ -54,12 +54,28 @@ int main(){
 		
 		
 // other Varibles
-		float k_P = 0.0085;
-		int P_signal = 0.0;
+		
 		int count1 =0;
 		int count2 =0;
 		int count3 =0;
 		int debug = 0; // Turns on all the print statements
+// PID values	
+		int PID_signal = 0
+		int current_sig;
+		int previous_sig;
+//P
+		float k_P = 0.0085;
+		int P_signal = 0.0;
+		
+		
+//I		
+		int I_signal = 0;
+		float k_I = 0.5;
+		
+//D		
+		int D_signal = 0;
+		float k_D = 0.5;
+
 		
 		
  // for the Horizontal Line
@@ -78,6 +94,9 @@ int main(){
 			sum_H = sum_H + (pix_H-160)*sig_H[pix_H];
 			P_signal = sum_H * k_P;
 			}
+			sum_H_Difference = current_sum_H-previous_sum_H;
+			D_signal = (sum_H_Difference/error_period)*k_D;
+			previous_sum_H = current_sum_H;
 		
 // for Vertical Left Line 
 		for (pix_VL=0;pix_VL<240;pix_VL++){
