@@ -2,22 +2,22 @@
 # include <time.h>
 # include "E101.h"
 
-extern "C" int init_hardware();
-extern "C" int connect_to_server( char server_addr[15],int port);
-extern "C" int send_to_server(char message[24]);
-extern "C" int receive_from_server(char message[24]);
 
-char server_ip[] = "130.195.6.196";
-int server_port = 1024;
-char server_password[] = "Please";
+//extern "C++" int init(int d_lev);
+extern "C++" int connect_to_server( char server[15],int port);
+extern "C++" int send_to_server(char message[6]);
+extern "C++" int receive_from_server(char message[6]);
 
-int main() {
-  init_hardware();
+int main(){
+	
+	//init(1);
+	char server[15] = {'1','3','0','.','1','9','5','.','6','.','1','9','6'};
+	connect_to_server(server, 1024);
+	char message[6] = {'P','l','e','a','s','e'};
+	send_to_server(message);
+	char password[6];
+	receive_from_server(password);
+	send_to_server(password);
 
-  connect_to_server(server_ip, server_port);
-  send_to_server(server_password);
-
-  char message[24];
-  receive_from_server(message);
-  send_to_server(message);
+return 0;
 }
