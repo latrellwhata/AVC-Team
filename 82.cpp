@@ -41,6 +41,7 @@ int main(){
    		int num_red_pixels;
 		float k_P = 0.0085;
 		int P_signal = 0.0;
+		bool debug = true;
 		//float multi = 0.2;
 		
  		
@@ -57,8 +58,9 @@ int main(){
  		sum = sum + (pix-160)*sig[pix];
 		P_signal = sum * k_P;
 		}
-		printf("White Pixels = %d\n" , num_white_pixels);
-			
+		if (degug == true){
+			printf("White Pixels = %d\n" , num_white_pixels);
+		}
 			int v1 = 60+P_signal;
 			int v2 = 60-P_signal;
 		
@@ -105,7 +107,9 @@ int main(){
 		if (num_red_pixels>180){ //at the end of quardrent 3
 			v1=200;
 			v2=200;
-			printf("Gassing it \n");
+			if (degug == true){
+				printf("Gassing it \n");
+			}
 			set_motor(1,v1);
 			set_motor(2,v2);
 			sleep1(4,0);
@@ -130,14 +134,11 @@ int main(){
 			}
 		
 		if (num_white_pixels>0){ //if this is not above 0 then we dont have a siginal
-			//v1=90;
-			//v2=90;
-					
-
-				
-			printf("Direction = Foward\n");
-			printf("Proportional Signal = %d\n" , P_signal);
-			printf("Motor 1 = %d \n Motor 2 =%d", v1, v2) ;
+			if (degug == true){
+				printf("Direction = Foward\n");
+				printf("Proportional Signal = %d\n" , P_signal);
+				printf("Motor 1 = %d \n Motor 2 =%d", v1, v2) ;
+			}
 			set_motor(1,v1);
 			set_motor(2,v2);
 			sleep1(0,5000);
@@ -145,21 +146,23 @@ int main(){
 		else {  // no white pixels so we must go back to find the line
 			//v1=90;
 			//v2=90;
-			printf("Direction = Reverse\n");
-			printf("Motor 1 = %d \n Motor 2 =%d", -v1, -v2) ;
+			if (degug == true){
+				printf("Direction = Reverse\n");
+				printf("Motor 1 = %d \n Motor 2 =%d", -v1, -v2) ;
+			}
 			set_motor(1, -v1*1.0);
 			set_motor(2, -v2*0.8);
 			
 			if (joe== true){
 				count++;
-			//	printf("count %d " , count);
+				if (degug == true){	
+					printf("count %d " , count);
+				}
 			}
 			sleep1(0,500);
 			
 		}
-		
-		
-	
+
 	
 	}
 }
