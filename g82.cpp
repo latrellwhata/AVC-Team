@@ -38,7 +38,7 @@ int main(){
     		char red;
  		char sig[320]; // siginal of that pixel
 		int num_white_pixels = 0;
-   		int num_red_pixels
+   		int num_red_pixels;
 		float k_P = 0.0085;
 		int P_signal = 0.0;
 		//float multi = 0.2;
@@ -102,13 +102,13 @@ int main(){
 			v2 = -60;
 		}
 		
-		if (num_red_pixels>200){ //at the end of quardrent 3
+		if (num_red_pixels>180){ //at the end of quardrent 3
 			v1=200;
 			v2=200;
 			printf("Gassing it \n");
 			set_motor(1,v1);
 			set_motor(2,v2);
-			sleep1(3,0);
+			sleep1(4,0);
 			set_motor(1,0);
 			set_motor(2,0);
 			return 0;
@@ -124,7 +124,7 @@ int main(){
 				count = 0;
 				goto start;
 		}
-		if (num_white_pixels>=300 ){ //if this is not above 0 then we dont have a siginal
+		if (num_white_pixels>=300 ){ //Once it reads a white line across the screen it will start counting
 				joe = true;
 			//	printf("Joe = TRUE");
 			}
