@@ -33,11 +33,12 @@ int main(){
   	
 		int sum = 0;
  		int pix; // pixel
+		int pixR;
  		char white; // whiteness of that pixel
-    char red;
+    		char red;
  		char sig[320]; // siginal of that pixel
 		int num_white_pixels = 0;
-    int num_red_pixels
+   		int num_red_pixels
 		float k_P = 0.0085;
 		int P_signal = 0.0;
 		//float multi = 0.2;
@@ -60,6 +61,13 @@ int main(){
 			
 			int v1 = 60+P_signal;
 			int v2 = 60-P_signal;
+		
+		for (pixR=0;pixR<320;pixR++){
+ 			red = get_pixel(120,pixR,0);
+			if(red>200){ // sets pixel to red
+				num_red_pixels++;	
+			}
+		}
 		
 		
 		// makes sure motor values are not too high
@@ -92,6 +100,18 @@ int main(){
 		}
 		if (v2 <0 && v2 > -60){ //makes sure motor speed is between the accepted values
 			v2 = -60;
+		}
+		
+		if (num_red_pixels>200){ //at the end of quardrent 3
+			v1=200;
+			v2=200;
+			printf("Gassing it \n");
+			set_motor(1,v1);
+			set_motor(2,v2);
+			sleep1(3,0);
+			set_motor(1,0);
+			set_motor(2,0);
+			return 0;
 		}
 		
 		
