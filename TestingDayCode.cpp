@@ -154,10 +154,7 @@ int main(){
 					printf("count %d " , count);
 				}
 			}
-			sleep1(0,500);
-			
+			sleep1(0,500);	
 		}
-
-	
 	}
 }
