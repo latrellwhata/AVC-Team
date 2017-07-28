@@ -1,4 +1,4 @@
-
+//E101.h
 void stop(int);
 int init();
 int take_picture();
