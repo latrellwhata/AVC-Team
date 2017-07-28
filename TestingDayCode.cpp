@@ -9,7 +9,7 @@ extern "C++" int receive_from_server(char message[6]);
 int main(){
 	
 	init();
-	bool joe = false;
+	bool startCount = false;
 	int count = 0;
  		
  	while (1){ // infinte loop
@@ -17,7 +17,7 @@ int main(){
  	
  	bool send = true;
  	
- 			if (send ==	true){
+ 			if (send == true){
 			char server[15] = {'1','3','0','.','1','9','5','.','6','.','1','9','6'};
 			connect_to_server(server, 1024);
 			char message[6] = {'P','l','e','a','s','e'};
@@ -42,8 +42,6 @@ int main(){
 		float k_P = 0.0085;
 		int P_signal = 0.0;
 		bool debug = true;
-		//float multi = 0.2;
-		
  		
  	for (pix=0;pix<320;pix++){
  		white = get_pixel(120,pix,3);
@@ -107,7 +105,7 @@ int main(){
 		if (num_red_pixels>180){ //at the end of quardrent 3
 			v1=200;
 			v2=200;
-			if (degug == true){
+			if (debug == true){
 				printf("Gassing it \n");
 			}
 			set_motor(1,v1);
@@ -120,7 +118,7 @@ int main(){
 		
 		
 		if (count > 250){
-				v1 =  200;  		// will turn right
+				v1 =  200; // will turn right
 				v2 = -180;
 				set_motor(1,v1);
 				set_motor(2,v2);
@@ -129,12 +127,11 @@ int main(){
 				goto start;
 		}
 		if (num_white_pixels>=300 ){ //Once it reads a white line across the screen it will start counting
-				joe = true;
-			//	printf("Joe = TRUE");
+				startCount = true;
 			}
 		
 		if (num_white_pixels>0){ //if this is not above 0 then we dont have a siginal
-			if (degug == true){
+			if (debug == true){
 				printf("Direction = Foward\n");
 				printf("Proportional Signal = %d\n" , P_signal);
 				printf("Motor 1 = %d \n Motor 2 =%d", v1, v2) ;
@@ -144,18 +141,16 @@ int main(){
 			sleep1(0,5000);
 		}
 		else {  // no white pixels so we must go back to find the line
-			//v1=90;
-			//v2=90;
-			if (degug == true){
+			if (debug == true){
 				printf("Direction = Reverse\n");
 				printf("Motor 1 = %d \n Motor 2 =%d", -v1, -v2) ;
 			}
 			set_motor(1, -v1*1.0);
 			set_motor(2, -v2*0.8);
 			
-			if (joe== true){
+			if (startCount == true){
 				count++;
-				if (degug == true){	
+				if (debug == true){	
 					printf("count %d " , count);
 				}
 			}
